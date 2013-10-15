@@ -6,6 +6,7 @@ module.exports = {
   },
   api: {
     healthcheck: require( "./api/healthcheck.js" ),
-    bugzilla: require( "./api/bugzilla.js" )
+    bugzilla: require( "./api/bugzilla.js" ),
+    github: require( "./api/github.js" )
   }
 };

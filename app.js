@@ -60,6 +60,7 @@ app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
 app.get( "/bugzilla/components/counts", routes.api.bugzilla.componentCounts );
 app.get( "/bugzilla/bugs/unconfirmed", routes.api.bugzilla.unconfirmed );
+app.get( "/github/:repo/tags", routes.api.github.tags );
 
 // Start up the server
 app.listen( env.get( "PORT", 3333 ), function() {

@@ -16,7 +16,8 @@
     "express": "3.1.0",
     "habitat": "0.4.1",
     "less-middleware": "0.1.12",
-    "nunjucks": "0.1.10"
+    "nunjucks": "0.1.10",
+    "node-github": "0.0.3"
   },
   "devDependencies": {
     "grunt": "0.4.1",
