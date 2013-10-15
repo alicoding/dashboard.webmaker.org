@@ -12,6 +12,7 @@
   "author": "Matthew Schranz <schranz.m@gmail.com>",
   "license": "MPL 2.0",
   "dependencies": {
+    "bz": "0.3.0",
     "express": "3.1.0",
     "habitat": "0.4.1",
     "less-middleware": "0.1.12",

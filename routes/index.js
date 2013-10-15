@@ -5,6 +5,7 @@ module.exports = {
     res.render( "index.html" );
   },
   api: {
-    healthcheck: require( "./api/healthcheck" )
+    healthcheck: require( "./api/healthcheck.js" ),
+    bugzilla: require( "./api/bugzilla.js" )
   }
 };
