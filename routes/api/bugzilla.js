@@ -9,5 +9,14 @@ module.exports = {
       }
       res.json( counts );
     });
+  },
+  unconfirmed: function( req, res ) {
+    bugzilla.unconfirmed( function( err, bugs ) {
+      if ( err ) {
+        res.json( 500, { error: 'Unable to get unconfirmed bugs from Bugzilla - ' + err } );
+	return;
+      }
+      res.json( bugs || [] );
+    });
   }
 };
