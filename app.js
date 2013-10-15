@@ -58,6 +58,8 @@ app.use( middleware.errorHandler );
 // Express routes
 app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
+app.get( "/bugzilla/components/counts", routes.api.bugzilla.componentCounts );
+app.get( "/bugzilla/bugs/unconfirmed", routes.api.bugzilla.unconfirmed );
 
 // Start up the server
 app.listen( env.get( "PORT", 3333 ), function() {
