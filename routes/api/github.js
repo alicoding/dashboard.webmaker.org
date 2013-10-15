@@ -4,7 +4,7 @@ module.exports = {
   tags: function( req, res ) {
     GitHub.tags( req.params.repo, function( err, tags ) {
       if ( err ) {
-        res.json( 500, { error: 'Unable to get tags for repo ' + repo + '.' } );
+        res.json( 500, { error: 'Unable to get tags for repo ' + req.params.repo + '.' } );
         return;
       }
       res.json( tags );
