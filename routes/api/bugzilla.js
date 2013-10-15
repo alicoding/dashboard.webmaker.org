@@ -5,7 +5,7 @@ module.exports = {
     bugzilla.countByComponent( function( err, counts ) {
       if ( err ) {
         res.json( 500, { error: 'Unable to get Bugzilla counts.' } );
-	return;
+        return;
       }
       res.json( counts );
     });
@@ -14,7 +14,7 @@ module.exports = {
     bugzilla.unconfirmed( function( err, bugs ) {
       if ( err ) {
         res.json( 500, { error: 'Unable to get unconfirmed bugs from Bugzilla - ' + err } );
-	return;
+        return;
       }
       res.json( bugs || [] );
     });
