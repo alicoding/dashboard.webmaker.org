@@ -1,6 +1,6 @@
 {
   "name": "Splattr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Splattr",
   "scripts": {
     "test": "grunt"
@@ -19,6 +19,11 @@
     "nunjucks": "0.1.10",
     "node-github": "0.0.3",
     "moment": "2.3.1"
+  },
+  "optionalDependencies": {
+    "mc": "~1.0.6",
+    "hiredis": "~0.1.14",
+    "redis": "~0.8.2"
   },
   "devDependencies": {
     "grunt": "0.4.1",

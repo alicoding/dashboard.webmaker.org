@@ -11,8 +11,20 @@ habitat.load();
 var app = express(),
     env = new habitat(),
     middleware = require( "./lib/middleware" ),
-    nunjucksEnv = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' ) ) );
-    routes = require( "./routes" );
+    nunjucksEnv = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' ) ) ),
+    cache = require( "./lib/cache" ),
+    routes = require( "./routes" )( cache );
+
+// Cache check middleware: if the URL is in cache, use that.
+function checkCache( req, res, next ) {
+  cache.read( req.url, function( err, data ) {
+    if ( err || !data ) {
+      next( err );
+      return;
+    }
+    res.json( data );
+  });
+}
 
 // Enable template rendering with nunjucks
 nunjucksEnv.express( app );
@@ -58,11 +70,11 @@ app.use( middleware.errorHandler );
 // Express routes
 app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
-app.get( "/bugzilla/components/counts", routes.api.bugzilla.componentCounts );
-app.get( "/bugzilla/bugs/unconfirmed", routes.api.bugzilla.unconfirmed );
-app.get( "/github/:repo/tags", routes.api.github.tags );
-app.get( "/github/:repo/:date/tags", routes.api.github.tagsFromDate );
-app.get( "/github/:repo/commits", routes.api.github.commits );
+app.get( "/bugzilla/components/counts", checkCache, routes.api.bugzilla.componentCounts );
+app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
+app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
+app.get( "/github/:repo/:date/tags", checkCache, routes.api.github.tagsFromDate );
+app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
 
 // Start up the server
 app.listen( env.get( "PORT", 3333 ), function() {
