@@ -1,15 +1,9 @@
 // Bring in all your require modules
 var express = require( "express" ),
-    habitat = require( "habitat" ),
     nunjucks = require( "nunjucks" ),
-    path = require( "path" );
-
-// Load config from ".env"
-habitat.load();
-
-// Generate app variables
-var app = express(),
-    env = new habitat(),
+    path = require( "path" ),
+    app = express(),
+    env = require( "./lib/config"),
     middleware = require( "./lib/middleware" ),
     nunjucksEnv = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' ) ) ),
     cache = require( "./lib/cache" ),
@@ -78,6 +72,7 @@ app.get( "/github/:repo/:date/tags", checkCache, routes.api.github.tagsFromDate 
 app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
 app.get( "/github/:repo/contributors", checkCache, routes.api.github.contributors );
 app.get( "/github/components/contributorCounts", checkCache, routes.api.github.contributorCounts );
+app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
 
 // Start up the server
 app.listen( env.get( "PORT", 3333 ), function() {
