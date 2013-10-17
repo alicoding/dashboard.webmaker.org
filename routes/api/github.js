@@ -1,6 +1,6 @@
 var GitHub = require( '../../lib/Webmaker.js' ).github;
 
-module.exports = function( cache) {
+module.exports = function( cache ) {
 
   return {
     tags: function( req, res ) {
