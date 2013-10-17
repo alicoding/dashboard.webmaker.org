@@ -75,6 +75,8 @@ app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirm
 app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
 app.get( "/github/:repo/:date/tags", checkCache, routes.api.github.tagsFromDate );
 app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
+app.get( "/github/:repo/contributors", checkCache, routes.api.github.contributors );
+app.get( "/github/components/contributorCounts", checkCache, routes.api.github.contributorCounts );
 
 // Start up the server
 app.listen( env.get( "PORT", 3333 ), function() {
