@@ -1,6 +1,6 @@
 var GitHub = require( '../../lib/Webmaker.js' ).github;
 
-module.exports = function( cache) {
+module.exports = function( cache ) {
 
   return {
     tags: function( req, res ) {
@@ -32,6 +32,26 @@ module.exports = function( cache) {
         }
         cache.write( req.url, commits );
         res.json( commits );
+      });
+    },
+    contributors: function( req, res ) {
+      GitHub.contributors( req.params.repo, function( err, contributors ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get contributors for repo ' + req.params.repo + '.' } );
+          return;
+        }
+        cache.write( req.url, contributors );
+        res.json( contributors );
+      });
+    },
+    contributorCounts: function( req, res ) {
+      GitHub.contributorCounts( 0, function( err, counts ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get component contributor counts.' } );
+          return;
+        }
+        cache.write( req.url, counts );
+        res.json( counts );
       });
     }
   };

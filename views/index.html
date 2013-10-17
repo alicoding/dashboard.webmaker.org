@@ -60,6 +60,18 @@
     <h2>Github</h2>
     <ul id="github-data">
     </ul>
+    <script>
+      // Load contributor counts for all components
+      // TODO: move this out of here into a proper script
+      $(function(){
+        var ul = $("#github-data");
+        $.getJSON("/github/components/contributorCounts", function(data) {
+          Object.keys(data).forEach(function(component) {
+            ul.append( "<li>" + component + ": " + data[ component ] );
+          });
+        });
+      });
+    </script>
 
     <!--
     <script>
