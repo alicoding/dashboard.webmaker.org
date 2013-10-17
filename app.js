@@ -70,6 +70,7 @@ app.use( middleware.errorHandler );
 // Express routes
 app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
+app.get( "/bugzilla/component/:component/open", checkCache, routes.api.bugzilla.openBugsByComponent );
 app.get( "/bugzilla/components/counts", checkCache, routes.api.bugzilla.componentCounts );
 app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
 app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
