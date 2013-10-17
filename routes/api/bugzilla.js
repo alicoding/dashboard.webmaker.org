@@ -22,6 +22,17 @@ module.exports = function( cache ) {
         cache.write( req.url, bugs );
         res.json( bugs );
       });
+    },
+    openBugsByComponent: function( req, res ) {
+      var component = req.params.component;
+      bugzilla.openBugsByComponent( component, function( err, bugs ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get open bugs for ' + component + ' Webmaker component - ' + err } );
+          return;
+        }
+        cache.write( req.url, bugs );
+        res.json( bugs );
+      });
     }
   };
 
