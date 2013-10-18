@@ -33,6 +33,17 @@ module.exports = function( cache ) {
         cache.write( req.url, bugs );
         res.json( bugs );
       });
+    },
+    bug: function( req, res ) {
+      var id = req.params.id;
+      bugzilla.bug( id, true, function( err, bug ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get bug ' + id + ' - ' + err } );
+          return;
+        }
+        cache.write( req.url, bug );
+        res.json( bug );
+      });
     }
   };
 
