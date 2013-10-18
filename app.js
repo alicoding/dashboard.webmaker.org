@@ -79,6 +79,7 @@ app.get( "/github/components/commitCounts", checkCache, routes.api.github.commit
 app.get( "/github/components/summaries", checkCache, routes.api.github.summaries );
 
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
+app.get( "/transifex/stats", checkCache, routes.api.transifex.projectStats );
 
 // Start up the server
 app.listen( env.get( "PORT", 3333 ), function() {

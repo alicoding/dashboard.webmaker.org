@@ -12,6 +12,16 @@ module.exports = function( cache ) {
         cache.write( req.url, counts );
         res.json( counts );
       });
+    },
+    projectStats: function( req, res ) {
+      transifex.projectStats( function( err, counts ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get the project stats' } );
+          return;
+        }
+        cache.write( req.url, counts );
+        res.json( counts );
+      });
     }
   };
 
