@@ -73,6 +73,20 @@
       });
     </script>
 
+    <h2>Transifex</h2>
+    <ul id="transifex-data">
+    </ul>
+    <script>
+      $(function(){
+        var ul = $("#transifex-data");
+        $.getJSON("/transifex/listOfContributors", function(data) {
+          Object.keys(data).forEach(function(contributorDetails) {
+            ul.append( "<li>" + contributorDetails + ": " + data[ contributorDetails ] );
+          });
+        });
+      });
+    </script>
+
     <!--
     <script>
       var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
