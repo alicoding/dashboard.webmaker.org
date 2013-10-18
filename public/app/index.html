@@ -1,25 +1,51 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="splattrApp">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
+  <title>Splattr</title>
   <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <!-- <div ng-view></div> TODO: Split into views -->
 
-  <div ng-view></div>
+  <div ng-controller="BugSplattrController">
+    <h2>Bugsplats (Bugzilla Counts)</h2>
 
-  <div>Angular seed app: v<span app-version></span></div>
+    <ul>
+      <li ng-repeat="component in bugs">
+        <strong>{{ component.component }}</strong>: {{ component.count }}
+      </li>
+    </ul>
+  </div>
+
+  <div ng-controller="GitSplattrController">
+    <h2>Gitsplats (Github Counts)</h2>
+
+    <ul>
+      <li ng-repeat="component in github">
+        <strong>{{ component.component }}</strong>: {{ component.count }}
+      </li>
+    </ul>
+
+  </div>
+
+  <div ng-controller="TransifexSplattrController">
+    <h2>Transplats (Transifex Counts)</h2>
+
+    <ul>
+      <li ng-repeat="component in transifex">
+        <strong>{{ component.component }}</strong>: {{ component.count }}
+      </li>
+    </ul>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
