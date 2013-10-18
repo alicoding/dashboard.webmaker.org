@@ -29,6 +29,11 @@
   "devDependencies": {
     "grunt": "0.4.1",
     "grunt-contrib-csslint": "0.1.2",
-    "grunt-contrib-jshint": "0.4.3"
+    "grunt-contrib-jshint": "0.4.3",
+    "phantomjs" : "*",
+    "karma" : "*",
+    "karma-junit-reporter" : "*",
+    "karma-jasmine" : "*",
+    "karma-ng-scenario" : "*"
   }
 }
