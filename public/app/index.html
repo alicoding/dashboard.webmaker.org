@@ -9,35 +9,55 @@
 <body>
   <!-- <div ng-view></div> TODO: Split into views -->
 
-  <div ng-controller="BugSplattrController">
-    <h2>Bugsplats (Bugzilla Counts)</h2>
-
-    <ul>
-      <li ng-repeat="component in bugs">
-        <strong>{{ component.component }}</strong>: {{ component.count }}
-      </li>
-    </ul>
-  </div>
-
-  <div ng-controller="GitSplattrController">
-    <h2>Gitsplats (Github Counts)</h2>
-
-    <ul>
-      <li ng-repeat="component in github">
-        <strong>{{ component.component }}</strong>: {{ component.count }}
-      </li>
-    </ul>
-
-  </div>
-
-  <div ng-controller="TransifexSplattrController">
-    <h2>Transplats (Transifex Counts)</h2>
-
-    <ul>
-      <li ng-repeat="component in transifex">
-        <strong>{{ component.component }}</strong>: {{ component.count }}
-      </li>
-    </ul>
+  <div class="panel-group" id="accordion" ng-controller="BugSplattrController">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Bugsplats
+        </h2>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="component in bugs">
+                <strong>{{ component.component }}</strong>: Bug Counts: {{ component.count }}
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-primary" ng-controller="GitSplattrController">
+      <div class="panel-heading">
+        <h2 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Gitsplats
+        </h2>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="component in github">
+              <strong>{{ component.component }}</strong>: Contributors: {{ component.count }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-primary" ng-controller="TransifexSplattrController">
+      <div class="panel-heading">
+        <h2 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Transplats
+        </h2>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="component in transifex">
+              <strong>{{ component.component }}</strong>: {{ component.count }}
+            </li>
+          </ul>
+        </div>
+      </div>
+   </div>
   </div>
 
   <!-- In production use:
