@@ -64,14 +64,18 @@ app.use( middleware.errorHandler );
 // Express routes
 app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
+
 app.get( "/bugzilla/component/:component/open", checkCache, routes.api.bugzilla.openBugsByComponent );
 app.get( "/bugzilla/components/counts", checkCache, routes.api.bugzilla.componentCounts );
+app.get( "/bugzilla/bug/:id", checkCache, routes.api.bugzilla.bug );
 app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
+
 app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
 app.get( "/github/:repo/:date/tags", checkCache, routes.api.github.tagsFromDate );
 app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
 app.get( "/github/:repo/contributors", checkCache, routes.api.github.contributors );
 app.get( "/github/components/contributorCounts", checkCache, routes.api.github.contributorCounts );
+
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
 
 // Start up the server
