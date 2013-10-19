@@ -63,6 +63,16 @@ module.exports = function( cache ) {
         cache.write( req.url, counts );
         res.json( counts );
       });
+    },
+    summaries: function( req, res ) {
+      GitHub.summaries( function( err, summaries ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get component summaries.' } );
+          return;
+        }
+        cache.write( req.url, summaries );
+        res.json( summaries );
+      });
     }
   };
 

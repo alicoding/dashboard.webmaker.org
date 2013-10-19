@@ -76,6 +76,7 @@ app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
 app.get( "/github/:repo/contributors", checkCache, routes.api.github.contributors );
 app.get( "/github/components/contributorCounts", checkCache, routes.api.github.contributorCounts );
 app.get( "/github/components/commitCounts", checkCache, routes.api.github.commitCounts );
+app.get( "/github/components/summaries", checkCache, routes.api.github.summaries );
 
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
 
