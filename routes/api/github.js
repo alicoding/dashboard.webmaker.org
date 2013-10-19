@@ -45,7 +45,7 @@ module.exports = function( cache ) {
       });
     },
     contributorCounts: function( req, res ) {
-      GitHub.contributorCounts( 0, function( err, counts ) {
+      GitHub.contributorCounts( function( err, counts ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get component contributor counts.' } );
           return;
