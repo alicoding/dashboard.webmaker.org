@@ -34,6 +34,16 @@ module.exports = function( cache ) {
         res.json( commits );
       });
     },
+    commitCounts: function( req, res ) {
+      GitHub.commitCounts( function( err, counts ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to component commit counts.' } );
+          return;
+        }
+        cache.write( req.url, counts );
+        res.json( counts );
+      });
+    },
     contributors: function( req, res ) {
       GitHub.contributors( req.params.repo, function( err, contributors ) {
         if ( err ) {
