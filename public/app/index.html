@@ -36,7 +36,11 @@
         <div class="panel-body">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="component in github">
-              <strong>{{ component.component }}</strong>: Contributors: {{ component.count }}
+              <h4>{{ component.component }}</h4>
+              <ul>
+                  <li> Contributors: {{ component.contributorCount }} </li>
+                  <li> Commits: {{ component.commitCount }} </li>
+              </ul>
             </li>
           </ul>
         </div>

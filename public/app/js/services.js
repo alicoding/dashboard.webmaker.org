@@ -19,7 +19,7 @@ splattrAppServices.factory('Bugs', ['$resource',
 
 splattrAppServices.factory('Github', ['$resource',
   function($resource){
-    return $resource('/github/components/contributorCounts', {}, {
+    return $resource('/github/components/summaries', {}, {
       query: {
         method:'GET',
         params: {},
