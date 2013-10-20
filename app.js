@@ -91,10 +91,9 @@ app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numbe
 app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStats );
 // TODO
 // app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.projectStats );
-app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.componentStats );
-// TODO
-// app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.projectStats );
 app.get( "/transifex/languages", checkCache, routes.api.transifex.getAllLanguages );
+app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.componentStats );
+app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.getLangCompStats );
 
 // To increase client-side performance, we prime the cache with data we'll need.
 // Each resource (route URL) can specify a unique frequency for updates. If

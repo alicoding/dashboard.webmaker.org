@@ -43,6 +43,18 @@ module.exports = function( cache ) {
         cache.write( req.url, langs );
         res.json( langs );
       });
+    },
+    getLangCompStats: function( req, res ) {
+      var component = req.params.component,
+          locale = req.params.locale;
+      transifex.getLangCompStats( component, locale, function( err, stats ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get the requested language component stats' } );
+          return;
+        }
+        cache.write( req.url, stats );
+        res.json( stats );
+      });
     }
   };
 
