@@ -65,10 +65,13 @@ app.use( middleware.errorHandler );
 app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
 
+// TODO these bugzilla routes need to be improved from a REST pov.
+app.get( "/bugzilla/component/:component/open/count", checkCache, routes.api.bugzilla.openBugsCountByComponent );
 app.get( "/bugzilla/component/:component/open", checkCache, routes.api.bugzilla.openBugsByComponent );
 app.get( "/bugzilla/components/counts", checkCache, routes.api.bugzilla.componentCounts );
 app.get( "/bugzilla/bug/:id", checkCache, routes.api.bugzilla.bug );
 app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
+app.get( "/bugzilla/bugs/today", checkCache, routes.api.bugzilla.today );
 
 app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
 app.get( "/github/:repo/:date/tags", checkCache, routes.api.github.tagsFromDate );
