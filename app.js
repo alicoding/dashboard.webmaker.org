@@ -89,8 +89,7 @@ app.get( "/github/components/summaries", checkCache, routes.api.github.summaries
 
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
 app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStats );
-// TODO
-// app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.projectStats );
+app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.getLangStats );
 app.get( "/transifex/languages", checkCache, routes.api.transifex.getAllLanguages );
 app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.componentStats );
 app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.getLangCompStats );

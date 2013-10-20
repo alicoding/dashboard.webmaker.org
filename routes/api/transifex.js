@@ -55,6 +55,17 @@ module.exports = function( cache ) {
         cache.write( req.url, stats );
         res.json( stats );
       });
+    },
+    getLangStats: function( req, res ) {
+      var locale = req.params.locale;
+      transifex.getLangStats( locale, function( err, stats ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get the requested language stats' } );
+          return;
+        }
+        cache.write( req.url, stats );
+        res.json( stats );
+      });
     }
   };
 
