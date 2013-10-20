@@ -1,7 +1,7 @@
-// Bring in all your require modules
 var express = require( "express" ),
     nunjucks = require( "nunjucks" ),
     path = require( "path" ),
+    request = require( "request" ),
     app = express(),
     env = require( "./lib/config"),
     middleware = require( "./lib/middleware" ),
@@ -11,6 +11,11 @@ var express = require( "express" ),
 
 // Cache check middleware: if the URL is in cache, use that.
 function checkCache( req, res, next ) {
+  if ( checkCache.overrides[ req.url ] ) {
+    delete checkCache.overrides[ req.url ];
+    next();
+    return;
+  }
   cache.read( req.url, function( err, data ) {
     if ( err || !data ) {
       next( err );
@@ -19,6 +24,7 @@ function checkCache( req, res, next ) {
     res.json( data );
   });
 }
+checkCache.overrides = {};
 
 // Enable template rendering with nunjucks
 nunjucksEnv.express( app );
@@ -85,7 +91,45 @@ app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numbe
 app.get( "/transifex/stats", checkCache, routes.api.transifex.projectStats );
 app.get( "/transifex/languages", checkCache, routes.api.transifex.getAllLanguages );
 
+// To increase client-side performance, we prime the cache with data we'll need.
+// Each resource (route URL) can specify a unique frequency for updates. If
+// none is given, the cache expiration time is used.
+function primeCache( urlPrefix ) {
+  // { url: "url-for-route", frequency: update-period-in-ms }
+  [
+    { url: "/bugzilla/components/counts" },
+    { url: "/bugzilla/bugs/unconfirmed" },
+    { url: "/bugzilla/bugs/today" },
+    { url: "/github/components/contributorCounts" },
+    { url: "/github/components/commitCounts" },
+    { url: "/github/components/summaries" },
+    { url: "/transifex/listOfContributors" },
+    { url: "/transifex/stats" }
+  ].forEach( function( resource ) {
+    var url = resource.url,
+        frequency = resource.frequency || env.get( "CACHE_UPDATE" ) || 60 * 10 * 1000; // 10 mins
+
+    function updateResource() {
+      checkCache.overrides[ url ] = true;
+      request.get( urlPrefix + url, function( err, resp, body ) {
+        if ( err ) {
+          console.log( "Error updating cache entry for %s: %s", url, err );
+        }
+      });
+    }
+
+    // Setup a timer to do this update, and also do one now
+    updateResource();
+    update = setInterval( updateResource, frequency );
+    update.unref();
+  });
+}
+
 // Start up the server
-app.listen( env.get( "PORT", 3333 ), function() {
-  console.log( "Server listening (Probably http://localhost:%d )", env.get( "PORT", 3333 ) );
+var port = env.get( "PORT", 3333 );
+app.listen( port, function() {
+  console.log( "Server listening (Probably http://localhost:%d )", port );
+
+  // TODO - I need to pass in the protocol, hostname or IP for this app...
+  primeCache( "http://localhost:" + port );
 });
