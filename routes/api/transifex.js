@@ -22,6 +22,16 @@ module.exports = function( cache ) {
         cache.write( req.url, counts );
         res.json( counts );
       });
+    },
+    getAllLanguages: function( req, res ) {
+      transifex.getAllLanguages( function( err, langs ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get list of languages' } );
+          return;
+        }
+        cache.write( req.url, langs );
+        res.json( langs );
+      });
     }
   };
 
