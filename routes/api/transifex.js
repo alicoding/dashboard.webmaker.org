@@ -14,13 +14,24 @@ module.exports = function( cache ) {
       });
     },
     projectStats: function( req, res ) {
-      transifex.projectStats( function( err, counts ) {
+      transifex.projectStats( function( err, stats ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get the project stats' } );
           return;
         }
-        cache.write( req.url, counts );
-        res.json( counts );
+        cache.write( req.url, stats );
+        res.json( stats );
+      });
+    },
+    componentStats: function( req, res ) {
+      var component = req.params.component;
+      transifex.componentStats( component, function( err, stats ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get the stats for requested component' } );
+          return;
+        }
+        cache.write( req.url, stats );
+        res.json( stats );
       });
     },
     getAllLanguages: function( req, res ) {

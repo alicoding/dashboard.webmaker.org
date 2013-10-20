@@ -88,7 +88,12 @@ app.get( "/github/components/commitCounts", checkCache, routes.api.github.commit
 app.get( "/github/components/summaries", checkCache, routes.api.github.summaries );
 
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
-app.get( "/transifex/stats", checkCache, routes.api.transifex.projectStats );
+app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStats );
+// TODO
+// app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.projectStats );
+app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.componentStats );
+// TODO
+// app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.projectStats );
 app.get( "/transifex/languages", checkCache, routes.api.transifex.getAllLanguages );
 
 // To increase client-side performance, we prime the cache with data we'll need.
@@ -104,7 +109,8 @@ function primeCache( urlPrefix ) {
     { url: "/github/components/commitCounts" },
     { url: "/github/components/summaries" },
     { url: "/transifex/listOfContributors" },
-    { url: "/transifex/stats" }
+    { url: "/transifex/components/stats" },
+    { url: "/transifex/languages" }
   ].forEach( function( resource ) {
     var url = resource.url,
         frequency = resource.frequency || env.get( "CACHE_UPDATE" ) || 60 * 10 * 1000; // 10 mins
