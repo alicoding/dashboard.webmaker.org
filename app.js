@@ -79,12 +79,13 @@ app.get( "/bugzilla/bug/:id", checkCache, routes.api.bugzilla.bug );
 app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
 app.get( "/bugzilla/bugs/today", checkCache, routes.api.bugzilla.today );
 
-app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
-app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
-app.get( "/github/:repo/contributors", checkCache, routes.api.github.contributors );
-app.get( "/github/components/contributorCounts", checkCache, routes.api.github.contributorCounts );
-app.get( "/github/components/commitCounts", checkCache, routes.api.github.commitCounts );
-app.get( "/github/components/summaries", checkCache, routes.api.github.summaries );
+app.get( "/github/:repo/tags", checkCache, routes.api.github.repo.tags );
+app.get( "/github/:repo/commits", checkCache, routes.api.github.repo.commits );
+app.get( "/github/:repo/contributors", checkCache, routes.api.github.repo.contributors );
+
+app.get( "/github/components/contributors/counts", checkCache, routes.api.github.components.contributors.counts );
+app.get( "/github/components/commits/counts", checkCache, routes.api.github.components.commits.counts );
+app.get( "/github/components/summaries", checkCache, routes.api.github.components.summaries );
 
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
 app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStats );
@@ -103,8 +104,8 @@ function primeCache( urlPrefix ) {
     { url: "/bugzilla/components/counts" },
     { url: "/bugzilla/bugs/unconfirmed" },
     { url: "/bugzilla/bugs/today" },
-    { url: "/github/components/contributorCounts" },
-    { url: "/github/components/commitCounts" },
+    { url: "/github/components/contributors/counts" },
+    { url: "/github/components/commits/counts" },
     { url: "/github/components/summaries" },
     { url: "/transifex/listOfContributors" },
     { url: "/transifex/components/stats" },
