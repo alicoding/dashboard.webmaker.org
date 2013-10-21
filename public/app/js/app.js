@@ -1,19 +1,31 @@
-'use strict';
-
+"use strict";
 
 // Declare app level module which depends on filters, and services
-angular.module('splattrApp', [
-  'ngRoute',
-  'splattrApp.filters',
-  'splattrApp.services',
-  'splattrApp.directives',
-  'splattrApp.controllers'
+var splattrApp = angular.module("splattrApp", [
+  "ngRoute",
+  "splattrApp.filters",
+  "splattrApp.services",
+  "splattrApp.directives",
+  "splattrApp.controllers"
 ]);
 
-// TODO: Split into views
-//
-// .config(['$routeProvider', function($routeProvider) {
-//   $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-//   $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-//   $routeProvider.otherwise({redirectTo: '/view1'});
-// }]);
+// Declare single-page routes
+splattrApp.config([ "$routeProvider", function( $routeProvider ) {
+  // Root
+  $routeProvider.when( "/", { templateUrl: "partials/root.html", controller: "RootSplattrController" } );
+
+  // First-level routes
+  $routeProvider.when( "/bugs", { templateUrl: "partials/bugs.html", controller: "BugSplattrController" } );
+  $routeProvider.when( "/trans", { templateUrl: "partials/transifex.html", controller: "TransifexSplattrController" } );
+
+  // Second-level routes
+  $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );
+
+  // The transifex partial `one_comp.html` hasn't been written,
+  // and the controller & custom services haven't been set up.
+  // See `services.js`, `controller.js` and `partials/bugs/one_comp.html` for examples.
+  // $routeProvider.when( "/trans/comp", { templateUrl: "partials/transifex/one_comp.html", controller: "TransifexCompSplatterController" } );
+
+  // Catchall, redirects to root
+  $routeProvider.otherwise( { redirectTo: "/" } );
+}]);

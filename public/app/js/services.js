@@ -14,6 +14,17 @@ splattrAppServices.factory('Bugs', ['$resource', function($resource){
         params: {},
         isArray: true
       }
+    }),
+    openBugsByComponent: $resource( "/bugzilla/component/:component/open", {}, {
+      query: {
+        method: "GET",
+        params: { component: "webmaker.org" }
+      },
+      get: {
+        method: "GET",
+        params: {},
+        isArray: true
+      }
     })
   };
 }]);

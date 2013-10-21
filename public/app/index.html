@@ -2,74 +2,31 @@
 <html lang="en" ng-app="splattrApp">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Splattr</title>
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
-  <!-- <div ng-view></div> TODO: Split into views -->
-
-  <div class="panel-group" id="accordion" ng-controller="BugSplattrController">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h2 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          Bugsplats
-        </h2>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-          <div class="panel-body">
-            <ul class="list-group">
-              <li class="list-group-item" ng-repeat="component in bugs">
-                <strong>{{ component.component }}</strong>: Bug Counts: {{ component.count }}
-              </li>
-            </ul>
+<body ng-controller="RootSplattrController">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header">
+          <h1>Splattr <small>by Mozilla</small></h1>
         </div>
       </div>
     </div>
-    <div class="panel panel-primary" ng-controller="GitSplattrController">
-      <div class="panel-heading">
-        <h2 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Gitsplats
-        </h2>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse">
-        <div class="panel-body">
-          <ul class="list-group">
-            <li class="list-group-item" ng-repeat="component in github">
-              <h4>{{ component.component }}</h4>
-              <ul>
-                  <li> Contributors: {{ component.contributorCount }} </li>
-                  <li> Commits: {{ component.commitCount }} </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ol class="breadcrumb">
+          <!-- TODO: Breadcrumb logic proper -->
+          <li class="active">Home</li>
+        </ol>
       </div>
     </div>
-    <div class="panel panel-primary" ng-controller="TransifexSplattrController">
-      <div class="panel-heading">
-        <h2 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Transplats
-        </h2>
-      </div>
-      <div id="collapseThree" class="panel-collapse collapse">
-        <div class="panel-body">
-          <h4>Overview</h4>
-          <ul class="list-group">
-            <li class="list-group-item" ng-repeat="component in contributions">
-              <strong>{{ component.component }}</strong>: {{ component.count }}
-            </li>
-          </ul>
-          <h4>Languages</h4>
-          <ul class="list-group">
-            <li class="list-group-item" ng-repeat="language in languages">
-              <strong>{{ language.name }}</strong>: {{ language.locale }}
-            </li>
-          </ul>
-        </div>
-      </div>
-   </div>
   </div>
+
+  <div ng-view></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
