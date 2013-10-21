@@ -80,7 +80,6 @@ app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirm
 app.get( "/bugzilla/bugs/today", checkCache, routes.api.bugzilla.today );
 
 app.get( "/github/:repo/tags", checkCache, routes.api.github.tags );
-app.get( "/github/:repo/:date/tags", checkCache, routes.api.github.tagsFromDate );
 app.get( "/github/:repo/commits", checkCache, routes.api.github.commits );
 app.get( "/github/:repo/contributors", checkCache, routes.api.github.contributors );
 app.get( "/github/components/contributorCounts", checkCache, routes.api.github.contributorCounts );
