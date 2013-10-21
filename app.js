@@ -93,6 +93,7 @@ app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex
 app.get( "/transifex/languages", checkCache, routes.api.transifex.getAllLanguages );
 app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.componentStats );
 app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.getLangCompStats );
+app.get( "/transifex/components/:locale/details", checkCache, routes.api.transifex.projectLangDetails );
 
 // To increase client-side performance, we prime the cache with data we'll need.
 // Each resource (route URL) can specify a unique frequency for updates. If
