@@ -54,9 +54,16 @@
       </div>
       <div id="collapseThree" class="panel-collapse collapse">
         <div class="panel-body">
+          <h4>Overview</h4>
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="component in transifex">
+            <li class="list-group-item" ng-repeat="component in contributions">
               <strong>{{ component.component }}</strong>: {{ component.count }}
+            </li>
+          </ul>
+          <h4>Languages</h4>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="language in languages">
+              <strong>{{ language.name }}</strong>: {{ language.locale }}
             </li>
           </ul>
         </div>

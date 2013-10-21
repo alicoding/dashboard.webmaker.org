@@ -38,6 +38,13 @@ splattrAppServices.factory('Transifex', ['$resource', function($resource){
         params: {},
         isArray: true
       }
+    }),
+    languages: $resource('/transifex/languages', {}, {
+      query: {
+        method: 'GET',
+        params: {},
+        isArray: true
+      }
     })
   };
 }]);

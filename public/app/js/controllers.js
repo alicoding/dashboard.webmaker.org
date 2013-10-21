@@ -13,5 +13,6 @@ var controllers = angular.module('splattrApp.controllers', [])
   }])
   .controller('TransifexSplattrController',  [ '$scope', "Transifex", function( $scope, Transifex ) {
     // Use custom service to query data from the server (see services.js)
-    $scope.transifex = Transifex.listOfContributors.query();
+    $scope.contributions = Transifex.listOfContributors.query();
+    $scope.languages = Transifex.languages.query();
   }]);
