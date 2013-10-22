@@ -79,6 +79,8 @@ app.get( "/bugzilla/bug/:id", checkCache, routes.api.bugzilla.bug );
 app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
 app.get( "/bugzilla/bugs/today", checkCache, routes.api.bugzilla.today );
 
+app.get( "/bugzilla/suite/count", checkCache, routes.api.bugzilla.overallCount );
+
 app.get( "/github/repo/:repo/tags", checkCache, routes.api.github.repo.tags );
 app.get( "/github/repo/:repo/commits", checkCache, routes.api.github.repo.commits );
 app.get( "/github/repo/:repo/contributors", checkCache, routes.api.github.repo.contributors );
@@ -110,6 +112,7 @@ function primeCache( urlPrefix ) {
     { url: "/bugzilla/components/counts" },
     { url: "/bugzilla/bugs/unconfirmed" },
     { url: "/bugzilla/bugs/today" },
+    { url: "/bugzilla/suite/count" },
     { url: "/github/components/contributors" },
     { url: "/github/components/contributors/counts" },
     { url: "/github/components/commits/counts" },

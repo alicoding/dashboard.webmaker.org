@@ -65,6 +65,16 @@ module.exports = function( cache ) {
         cache.write( req.url, bug );
         res.json( bug );
       });
+    },
+    overallCount: function( req, res ) {
+      bugzilla.overallCount( function( err, count ) {
+        if ( err ) {
+          res.json( 500, { error: 'Unable to get overall bug count. ' + err.message } );
+          return;
+        }
+        cache.write( req.url, count );
+        res.json( count );
+      });
     }
   };
 
