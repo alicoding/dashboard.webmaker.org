@@ -16,6 +16,7 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
 
   // First-level routes
   $routeProvider.when( "/bugs", { templateUrl: "partials/bugs/components.html", controller: "BugSplattrController" } );
+  $routeProvider.when( "/contributors", { templateUrl: "partials/contributors/list.html", controller: "GitHubContributorController"})
 
   // Second-level routes
   $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );

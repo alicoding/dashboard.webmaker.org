@@ -42,4 +42,7 @@ var controllers = angular.module("splattrApp.controllers", []);
     // Use custom service to query data from the server (see services.js)
     $scope.component = $routeParams.component;
     $scope.bugs = Bugs.openBugsByComponent.get({ component: $routeParams.component });
+  }])
+  .controller("GitHubContributorController", [ "$scope", "Github", function( $scope, Github ) {
+    $scope.contributors = Github.suiteContributors.query();
   }]);
