@@ -12,8 +12,8 @@
       <div class="list-group" ng-repeat="component in bugs">
         <!-- Links to detail level -->
         <a href="#/bugs/comp/{{ component.component }}" class="list-group-item">
+          <strong>{{ component.component }}</strong>
           <span class="badge">{{ component.count }}</span>
-          <strong>{{ component.component }}
         </a>
       </div>
     </div>
