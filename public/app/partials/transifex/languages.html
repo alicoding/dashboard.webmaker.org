@@ -1,19 +1,19 @@
-<!-- Transifex PARTIAL, FIRST LEVEL -->
+<!-- Bugs/git PARTIAL, FIRST LEVEL -->
 
 <div class="row">
   <div class="col-xs-12 col-xs-offset-1">
     <div class="panel panel-primary">
       <!-- Links to next direct level -->
-      <a href="#">
+      <a href="#/trans/list">
         <div class="panel-heading">
-          <h2>Transplats Contributors</h2>
+          <h2>Transplats Language Supports</h2>
         </div>
       </a>
-      <div class="list-group" ng-repeat="component in transifex.contributions">
+      <div class="list-group" ng-repeat="language in transifex.languages">
         <!-- Links to detail level -->
         <a href="#" class="list-group-item">
-          <span class="badge">{{ component.count }}</span>
-          <strong>{{ component.component }}</strong>
+          <span class="badge">{{ language.locale }}</span>
+          <strong>{{ language.name }}
         </a>
       </div>
     </div>

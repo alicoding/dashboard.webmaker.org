@@ -16,10 +16,19 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
 
   // First-level routes
   $routeProvider.when( "/bugs", { templateUrl: "partials/bugs.html", controller: "BugSplattrController" } );
-  $routeProvider.when( "/trans", { templateUrl: "partials/transifex.html", controller: "TransifexSplattrController" } );
 
   // Second-level routes
   $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );
+
+
+  //Transifex routes
+  $routeProvider.when( "/trans", { templateUrl: "partials/transifex/root.html", controller: "TransifexSplattrController" } );
+  // Second-level routes
+  $routeProvider.when( "/trans/list", { templateUrl: "partials/transifex/root.html", controller: "TransifexSplattrController" } );
+  // Third-level routes
+  $routeProvider.when( "/trans/list/contributors", { templateUrl: "partials/transifex/contributors.html", controller: "TransifexSplattrController" } );
+  // Third-level routes
+  $routeProvider.when( "/trans/list/languages", { templateUrl: "partials/transifex/languages.html", controller: "TransifexSplattrController" } );
 
   // The transifex partial `one_comp.html` hasn't been written,
   // and the controller & custom services haven't been set up.
