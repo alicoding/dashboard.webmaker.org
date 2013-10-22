@@ -92,6 +92,7 @@ app.get( "/github/components/tags/counts", checkCache, routes.api.github.compone
 app.get( "/github/components/summaries", checkCache, routes.api.github.components.summaries );
 
 app.get( "/github/suite/commits/count", checkCache, routes.api.github.suite.commits.count );
+app.get( "/github/suite/contributors", checkCache, routes.api.github.suite.contributors.list );
 app.get( "/github/suite/contributors/count", checkCache, routes.api.github.suite.contributors.count );
 app.get( "/github/suite/releases/count", checkCache, routes.api.github.suite.releases.count );
 
@@ -119,6 +120,7 @@ function primeCache( urlPrefix ) {
     { url: "/github/components/tags/counts" },
     { url: "/github/components/summaries" },
     { url: "/github/suite/commits/count" },
+    { url: "/github/suite/contributors" },
     { url: "/github/suite/contributors/count" },
     { url: "/github/suite/releases/count" },
     { url: "/transifex/listOfContributors" },

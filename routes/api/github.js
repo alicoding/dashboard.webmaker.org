@@ -107,6 +107,16 @@ module.exports = function( cache ) {
         }
       },
       contributors: {
+        list: function( req, res ) {
+          GitHub.suite.contributors.list( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get the contributors list for the suite.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        },
         count: function( req, res ) {
           GitHub.suite.contributors.count( function( err, data ) {
             if ( err ) {
