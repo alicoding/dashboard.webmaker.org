@@ -43,6 +43,8 @@ var controllers = angular.module("splattrApp.controllers", []);
     $scope.component = $routeParams.component;
     $scope.bugs = Bugs.openBugsByComponent.get({ component: $routeParams.component });
   }])
-  .controller("GitHubContributorController", [ "$scope", "Github", function( $scope, Github ) {
+  .controller("GitHubContributorController", [ "$scope", "$routeParams", "Github", function( $scope, $routeParams, Github ) {
     $scope.contributors = Github.suiteContributors.query();
+    if ( "contributor" in $routeParams )
+      $scope.contributor = Github.suiteContributor.get({ login: $routeParams.contributor });
   }]);

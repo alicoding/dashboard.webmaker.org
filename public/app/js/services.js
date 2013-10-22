@@ -58,6 +58,12 @@ splattrAppServices.factory('Github', ['$resource', function($resource){
         isArray: false
       }
     }),
+    suiteContributor: $resource('/github/suite/contributor/:login', {}, {
+      get: {
+        method: "GET",
+        params: { id: "RickEyre" }
+      }
+    }),
     suiteContributors: $resource('/github/suite/contributors', {}, {
       query: {
         method: 'GET',

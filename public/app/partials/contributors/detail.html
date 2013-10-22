@@ -1,0 +1,21 @@
+<!-- BUG PARTIAL, THIRD LEVEL -->
+
+<div class="row">
+  <div class="col-xs-12 col-xs-offset-1">
+    <div class="panel panel-primary">
+      <!-- Links to next direct level -->
+      <a href="#/contributors">
+        <div class="panel-heading">
+          <h2>{{ contributor.login }}</h2>
+        </div>
+      </a>
+      <div class="panel-body">
+        <div class="jumbotron">
+          <img class="contrib-image" src="http://www.gravatar.com/avatar/{{ contributor.gravatar_id }}?s=200"/>
+          <strong>Contributions: </strong> {{ contributor.contributions }} <br>
+          Check <a href="{{ contributor.html_url }}">{{ contributor.login}}'s GitHub</a> account out! <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
