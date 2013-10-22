@@ -40,11 +40,11 @@
           <h2>Transplats</h2>
         </div>
       </a>
-      <div class="list-group">
+      <div class="list-group" ng-repeat="component in contributions">
         <!-- Links to detail level -->
         <a href="#" class="list-group-item">
-          <strong>Metadata for all components</strong>
-          <span class="badge">XX</span>
+          <strong>{{ component.component }}</strong>
+          <span class="badge">{{ component.count }}</span>
         </a>
       </div>
     </div>

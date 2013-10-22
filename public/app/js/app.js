@@ -30,8 +30,6 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
   // Second-level routes
   $routeProvider.when( "/trans/list", { templateUrl: "partials/transifex/root.html", controller: "TransifexSplattrController" } );
   // Third-level routes
-  $routeProvider.when( "/trans/list/contributors", { templateUrl: "partials/transifex/contributors.html", controller: "TransifexSplattrController" } );
-  // Third-level routes
   $routeProvider.when( "/trans/list/languages", { templateUrl: "partials/transifex/languages.html", controller: "TransifexSplattrController" } );
 
   // The transifex partial `one_comp.html` hasn't been written,

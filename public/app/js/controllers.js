@@ -10,6 +10,7 @@ var controllers = angular.module("splattrApp.controllers", []);
     $scope.suiteCommitsCount = Github.suiteCommitsCount.query();
     $scope.suiteContributorsCount = Github.suiteContributorsCount.query();
     $scope.suiteReleasesCount = Github.suiteReleasesCount.query();
+    $scope.contributions = Transifex.listOfContributors.query();
   }])
   .controller("BugSplattrController", [ "$scope", "Bugs", "Github", function( $scope, Bugs, Github ) {
     // Use custom service to query data from the server (see services.js)
@@ -28,7 +29,6 @@ var controllers = angular.module("splattrApp.controllers", []);
 
     // NOTE: $routeParams isn't used in this controller.  If you need access to it,
     //       add it to the declaration like in `BugCompSplatterController`
-    $scope.transifex.contributions = Transifex.listOfContributors.query();
     $scope.transifex.languages = Transifex.languages.query();
   }])
   .controller("TransifexCompSplattrController",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
