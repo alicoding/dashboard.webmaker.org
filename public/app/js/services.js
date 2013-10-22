@@ -25,6 +25,13 @@ splattrAppServices.factory('Bugs', ['$resource', function($resource){
         params: {},
         isArray: true
       }
+    }),
+    overallBugCount: $resource( "/bugzilla/suite/count", {}, {
+      query: {
+        method: "GET",
+        params: {},
+        isArray: false
+      }
     })
   };
 }]);
@@ -37,7 +44,28 @@ splattrAppServices.factory('Github', ['$resource', function($resource){
         params: {},
         isArray: true
       }
-    })
+    }),
+    suiteCommitsCount: $resource('/github/suite/commits/count', {}, {
+      query: {
+        method: 'GET',
+        params: {},
+        isArray: false
+      }
+    }),
+    suiteContributorsCount: $resource('/github/suite/contributors/count', {}, {
+      query: {
+        method: 'GET',
+        params: {},
+        isArray: false
+      }
+    }),
+    suiteReleasesCount: $resource('/github/suite/releases/count', {}, {
+      query: {
+        method: 'GET',
+        params: {},
+        isArray: false
+      }
+    }),
   };
 }]);
 

@@ -12,8 +12,20 @@
       <div class="list-group">
         <!-- Links to detail level -->
         <a href="#" class="list-group-item">
-          <strong>Metadata for all components</strong>
-          <span class="badge">XX</span>
+          <strong>Bugs</strong>
+          <span class="badge">{{ overallBugCount.count }}</span>
+        </a>
+        <a href="#" class="list-group-item">
+          <strong>Contributors</strong>
+          <span class="badge">{{ suiteContributorsCount.count }}</span>
+        </a>
+        <a href="#" class="list-group-item">
+          <strong>Commits</strong>
+          <span class="badge">{{ suiteCommitsCount.count }}</span>
+        </a>
+        <a href="#" class="list-group-item">
+          <strong>Releases</strong>
+          <span class="badge">{{ suiteReleasesCount.count }}</span>
         </a>
       </div>
     </div>
