@@ -94,6 +94,16 @@ module.exports = function( cache ) {
       }
     },
     suite: {
+      contributor: function( req, res ) {
+          GitHub.suite.contributor( req.params.login, function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get the contributor ' + req.params.login + '.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+      },
       commits: {
         count: function( req, res ) {
           GitHub.suite.commits.count( function( err, data ) {

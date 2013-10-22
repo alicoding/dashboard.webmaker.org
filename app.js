@@ -92,6 +92,7 @@ app.get( "/github/components/tags/counts", checkCache, routes.api.github.compone
 app.get( "/github/components/summaries", checkCache, routes.api.github.components.summaries );
 
 app.get( "/github/suite/commits/count", checkCache, routes.api.github.suite.commits.count );
+app.get( "/github/suite/contributor/:login", checkCache, routes.api.github.suite.contributor );
 app.get( "/github/suite/contributors", checkCache, routes.api.github.suite.contributors.list );
 app.get( "/github/suite/contributors/count", checkCache, routes.api.github.suite.contributors.count );
 app.get( "/github/suite/releases/count", checkCache, routes.api.github.suite.releases.count );
