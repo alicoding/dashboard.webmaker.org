@@ -83,9 +83,15 @@ app.get( "/github/repo/:repo/tags", checkCache, routes.api.github.repo.tags );
 app.get( "/github/repo/:repo/commits", checkCache, routes.api.github.repo.commits );
 app.get( "/github/repo/:repo/contributors", checkCache, routes.api.github.repo.contributors );
 
+app.get( "/github/components/contributors", checkCache, routes.api.github.components.contributors.list );
 app.get( "/github/components/contributors/counts", checkCache, routes.api.github.components.contributors.counts );
 app.get( "/github/components/commits/counts", checkCache, routes.api.github.components.commits.counts );
+app.get( "/github/components/tags/counts", checkCache, routes.api.github.components.tags.counts );
 app.get( "/github/components/summaries", checkCache, routes.api.github.components.summaries );
+
+app.get( "/github/suite/commits/count", checkCache, routes.api.github.suite.commits.count );
+app.get( "/github/suite/contributors/count", checkCache, routes.api.github.suite.contributors.count );
+app.get( "/github/suite/releases/count", checkCache, routes.api.github.suite.releases.count );
 
 app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
 app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStats );
@@ -104,9 +110,14 @@ function primeCache( urlPrefix ) {
     { url: "/bugzilla/components/counts" },
     { url: "/bugzilla/bugs/unconfirmed" },
     { url: "/bugzilla/bugs/today" },
+    { url: "/github/components/contributors" },
     { url: "/github/components/contributors/counts" },
     { url: "/github/components/commits/counts" },
+    { url: "/github/components/tags/counts" },
     { url: "/github/components/summaries" },
+    { url: "/github/suite/commits/count" },
+    { url: "/github/suite/contributors/count" },
+    { url: "/github/suite/releases/count" },
     { url: "/transifex/listOfContributors" },
     { url: "/transifex/components/stats" },
     { url: "/transifex/languages" }

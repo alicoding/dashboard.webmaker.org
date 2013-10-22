@@ -49,10 +49,32 @@ module.exports = function( cache ) {
         },
       },
       contributors: {
+        list: function( req, res ) {
+          GitHub.components.contributors.list( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get the contributors per component list.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        },
         counts: function( req, res ) {
           GitHub.components.contributors.counts( function( err, data ) {
             if ( err ) {
               res.json( 500, { error: 'Unable to get component contributor counts.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        }
+      },
+      tags: {
+        counts: function( req, res ) {
+          GitHub.components.tags.counts( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get component tag counts.' } );
               return;
             }
             cache.write( req.url, data );
@@ -69,6 +91,44 @@ module.exports = function( cache ) {
           cache.write( req.url, data );
           res.json( data );
         });
+      }
+    },
+    suite: {
+      commits: {
+        count: function( req, res ) {
+          GitHub.suite.commits.count( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get the commit count for the suite.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        }
+      },
+      contributors: {
+        count: function( req, res ) {
+          GitHub.suite.contributors.count( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get the contributors count for the suite.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        }
+      },
+      releases: {
+        count: function( req, res ) {
+          GitHub.suite.releases.count( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get the releases count for the suite.' } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        }
       }
     }
   };
