@@ -79,9 +79,9 @@ app.get( "/bugzilla/bug/:id", checkCache, routes.api.bugzilla.bug );
 app.get( "/bugzilla/bugs/unconfirmed", checkCache, routes.api.bugzilla.unconfirmed );
 app.get( "/bugzilla/bugs/today", checkCache, routes.api.bugzilla.today );
 
-app.get( "/github/:repo/tags", checkCache, routes.api.github.repo.tags );
-app.get( "/github/:repo/commits", checkCache, routes.api.github.repo.commits );
-app.get( "/github/:repo/contributors", checkCache, routes.api.github.repo.contributors );
+app.get( "/github/repo/:repo/tags", checkCache, routes.api.github.repo.tags );
+app.get( "/github/repo/:repo/commits", checkCache, routes.api.github.repo.commits );
+app.get( "/github/repo/:repo/contributors", checkCache, routes.api.github.repo.contributors );
 
 app.get( "/github/components/contributors/counts", checkCache, routes.api.github.components.contributors.counts );
 app.get( "/github/components/commits/counts", checkCache, routes.api.github.components.commits.counts );
