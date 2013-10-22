@@ -18,6 +18,10 @@ var controllers = angular.module("splattrApp.controllers", []);
     $scope.bugs = Bugs.componentCounts.query();
     $scope.github = Github.componentSummaries.query();
   }])
+  .controller("BugDetailSplattrController", [ "$scope", "$routeParams", "Bugs", "Github", function( $scope, $routeParams, Bugs, Github ) {
+    // Use custom service to query data from the server (see services.js)
+    $scope.bug = Bugs.singleBugDetails.get({ id: $routeParams.id });
+  }])
   .controller("TransifexSplattrController",  [ "$scope", "Transifex", function( $scope, Transifex ) {
     // Use custom service to query data from the server (see services.js)
     $scope.transifex = $scope.transifex || {};

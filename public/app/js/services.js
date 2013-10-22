@@ -32,6 +32,12 @@ splattrAppServices.factory('Bugs', ['$resource', function($resource){
         params: {},
         isArray: false
       }
+    }),
+    singleBugDetails: $resource( "/bugzilla/bug/:id", {}, {
+      query: {
+        method: "GET",
+        params: { id: "0" }
+      }
     })
   };
 }]);

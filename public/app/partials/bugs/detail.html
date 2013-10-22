@@ -1,0 +1,28 @@
+<!-- BUG PARTIAL, THIRD LEVEL -->
+
+<div class="row">
+  <div class="col-xs-12 col-xs-offset-1">
+    <div class="panel panel-primary">
+      <!-- Links to next direct level -->
+      <a href="#/bugs/comp/{{ bug.component }}">
+        <div class="panel-heading">
+          <h2>Bug {{ bug.id }} - {{ bug.summary }} </h2>
+        </div>
+      </a>
+      <div class="panel-body">
+        <strong>Creator: </strong><span class="badge">{{ bug.creator.real_name }}</span> <br>
+        <strong>Assigned Too: </strong><span class="badge">{{ bug.assigned_to.real_name }}</span><br>
+        <strong>Status: </strong><span class="badge">{{ bug.status }}</span><br>
+        <strong>Severity: </strong><span class="badge">{{ bug.severity }}</span><br>
+        <strong>URL: </strong><span class="badge">{{ bug.url }}</span><br>
+        <h3>Comments</h3>
+        <div class="list-group" ng-repeat="comment in bug.comments">
+          <div class="list-group-item">
+            <h4>At {{ comment.creation_time }} {{ comment.creator.name }} said:</h4>
+            {{ comment.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

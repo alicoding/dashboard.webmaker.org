@@ -20,6 +20,8 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
   // Second-level routes
   $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );
 
+  // Third-level routes
+  $routeProvider.when( "/bug/:id", { templateUrl: "partials/bugs/detail.html", controller: "BugDetailSplattrController" } );
 
   //Transifex routes
   $routeProvider.when( "/trans", { templateUrl: "partials/transifex/root.html", controller: "TransifexSplattrController" } );

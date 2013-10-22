@@ -11,7 +11,7 @@
       </a>
       <div class="list-group" ng-repeat="bug in bugs">
         <!-- Links to detail level -->
-        <a href="#" class="list-group-item">
+        <a href="#/bug/{{ bug.id }}" class="list-group-item">
           <strong>Creator:</strong> {{ bug.creator.real_name }} <br>
           <strong>Assigned To:</strong> {{ bug.assigned_to.real_name }} <br>
           <strong>Bug Summary:</strong> {{ bug.summary }} <br>
