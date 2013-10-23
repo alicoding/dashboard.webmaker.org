@@ -33,12 +33,9 @@ var controllers = angular.module("splattrApp.controllers", []);
     //       add it to the declaration like in `BugCompSplatterController`
     $scope.transifex.languages = Transifex.languages.query();
   }])
-  .controller("TransifexCompSplattrController",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
-    // Use custom service to query data from the server (see services.js)
-
-    // This controller will collect transifex data about a specific component.
-    // See "BugCompSlattrController", which uses `services.js` and `controllers.js` in tandem
-    // to get the parameter from the route defined in `app.js`
+  .controller("statsAllComponents",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
+    $scope.locale = $routeParams.locale;
+    $scope.transifex = Transifex.statsAllComponents.get({ locale: $routeParams.locale });
   }])
   .controller("BugCompSplattrController", [ "$scope", "$routeParams", "Bugs", "Github", function( $scope, $routeParams, Bugs, Github ) {
     // Use custom service to query data from the server (see services.js)

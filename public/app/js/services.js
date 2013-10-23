@@ -111,6 +111,17 @@ splattrAppServices.factory('Transifex', ['$resource', function($resource){
         isArray: true
       }
     }),
+    statsAllComponents: $resource( "/transifex/components/:locale/stats", {}, {
+      query: {
+        method: "GET",
+        params: { locale: "en_CA" }
+      },
+      get: {
+        method: "GET",
+        params: {},
+        isArray: false
+      }
+    }),
     languages: $resource('/transifex/languages', {}, {
       query: {
         method: 'GET',

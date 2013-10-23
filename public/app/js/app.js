@@ -22,6 +22,7 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
   // Second-level routes
   $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );
   $routeProvider.when( "/contributors/:contributor", { templateUrl: "partials/contributors/detail.html", controller: "GitHubContributorController"})
+  $routeProvider.when( "/trans/components/:locale/stats", { templateUrl: "partials/transifex/langdetail.html", controller: "statsAllComponents"})
   $routeProvider.when( "/trans/languages", { templateUrl: "partials/transifex/languages.html", controller: "TransifexSplattrController" } );
   $routeProvider.when( "/tags/:repo", { templateUrl: "partials/tags/detail.html", controller: "GitHubContributorController"})
 

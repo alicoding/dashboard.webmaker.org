@@ -7,3 +7,24 @@
 .contrib-img {
   display: block;
 }
+
+.slug-name {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	width: 95px;
+	text-transform: capitalize;
+}
+
+.slug-progress-container {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.slug-container {
+	height: 45px;
+}
+
+.slug-completed {
+	margin-left: 5px;
+}
