@@ -9,9 +9,14 @@
           <h2>Statistics for {{ locale }}</h2>
         </div>
       </a>
+      <div class="panel-body">
+        <strong>Coordinators: </strong><span class="badge">{{ transifexDetails.coordinators.length }}</span> <br>
+        <strong>Reviewers: </strong><span class="badge">{{ transifexDetails.reviewers.length }}</span><br>
+        <strong>Translators: </strong><span class="badge">{{ transifexDetails.translators.length }}</span><br>
+      </div>
       <div class="list-group" ng-repeat="(key, value) in transifex">
         <!-- Links to detail level -->
-        <a href="#/trans/languages" class="list-group-item slug-container" title="{{value.completed}}">
+        <a href="#/trans/component/{{key}}/language/{{locale}}/stats" class="list-group-item slug-container" title="{{value.completed}}">
           <div class="slug-name">{{ key }}</div>
           <span class="badge slug-completed">{{value.completed}}</span>
           <div class="progress slug-progress-container">

@@ -36,6 +36,15 @@ var controllers = angular.module("splattrApp.controllers", []);
   .controller("statsAllComponents",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
     $scope.locale = $routeParams.locale;
     $scope.transifex = Transifex.statsAllComponents.get({ locale: $routeParams.locale });
+    $scope.transifexDetails = Transifex.transAppService.get({ locale: $routeParams.locale });
+  }])
+  .controller("statLangComponent",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
+    $scope.locale = $routeParams.locale;
+    $scope.component = $routeParams.component;
+    $scope.transifex = Transifex.statLangComponent.get({
+      locale: $routeParams.locale,
+      component: $routeParams.component
+    });
   }])
   .controller("BugCompSplattrController", [ "$scope", "$routeParams", "Bugs", "Github", function( $scope, $routeParams, Bugs, Github ) {
     // Use custom service to query data from the server (see services.js)

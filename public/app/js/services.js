@@ -122,6 +122,31 @@ splattrAppServices.factory('Transifex', ['$resource', function($resource){
         isArray: false
       }
     }),
+    transAppService: $resource( "/transifex/components/:locale/details", {}, {
+      query: {
+        method: "GET",
+        params: { locale: "en_CA" }
+      },
+      get: {
+        method: "GET",
+        params: {},
+        isArray: false
+      }
+    }),
+    statLangComponent: $resource( "/transifex/:component/:locale/stats", {}, {
+      query: {
+        method: "GET",
+        params: { 
+          locale: "en_CA",
+          component: "webmaker.org"
+        }
+      },
+      get: {
+        method: "GET",
+        params: {},
+        isArray: false
+      }
+    }),
     languages: $resource('/transifex/languages', {}, {
       query: {
         method: 'GET',
