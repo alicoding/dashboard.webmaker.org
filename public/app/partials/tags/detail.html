@@ -10,15 +10,14 @@
         </div>
       </a>
       <div class="panel-body">
-        <div class="list-group" ng-repeat="tag in repoTags">
-          <!-- Links to detail level -->
-          <div class="list-group-item">
-            <strong>Release: </strong> <span class="badge">{{ tag.name }}</span> <br>
-            <strong>Zipball: </strong><a href="{{ tag.zipball_url }}">Download</a> <br>
-            <strong>Tarball: </strong><a href="{{ tag.tarball_url }}">Download</a> <br>
-            <strong>See it: </strong><a href="{{ tag.commit.url }}">Go to Code</a>
-          </div>
-        </div>
+        <ul class="list-group" ng-repeat="tag in repoTags">
+          <li href="#" class="list-group-item">
+            <h3 class="list-group-item-heading">Release: {{ tag.name }}</h3>
+            <p class="list-group-item-text"><strong>Zipball: </strong><a href="{{ tag.zipball_url }}">Download</a></p>
+            <p class="list-group-item-text"><strong>Tarball: </strong><a href="{{ tag.tarball_url }}">Download</a></p>
+            <p class="list-group-item-text"><strong>See it: </strong><a href="{{ tag.commit.url }}">Go to Code</a></p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
