@@ -11,6 +11,8 @@ var controllers = angular.module("splattrApp.controllers", []);
     $scope.suiteContributorsCount = Github.suiteContributorsCount.query();
     $scope.suiteReleasesCount = Github.suiteReleasesCount.query();
     $scope.contributions = Transifex.listOfContributors.query();
+    $scope.languages = Transifex.languages.query();
+
   }])
   .controller("BugSplattrController", [ "$scope", "Bugs", "Github", function( $scope, Bugs, Github ) {
     // Use custom service to query data from the server (see services.js)
