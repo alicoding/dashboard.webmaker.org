@@ -85,6 +85,13 @@ splattrAppServices.factory('Github', ['$resource', function($resource){
         isArray: false
       }
     }),
+    componentTags: $resource('/github/components/tags/counts', {}, {
+      query: {
+        method: 'GET',
+        params: {},
+        isArray: true
+      }
+    })
   };
 }]);
 
