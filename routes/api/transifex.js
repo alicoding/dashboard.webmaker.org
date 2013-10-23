@@ -1,4 +1,4 @@
-var transifex = require( '../../lib/Webmaker.js' ).transifex;
+var transifex = require( '../../lib/webmaker.js' ).transifex;
 
 module.exports = function( cache ) {
 

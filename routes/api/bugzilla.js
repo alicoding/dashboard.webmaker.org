@@ -1,4 +1,4 @@
-var bugzilla = require( '../../lib/Webmaker.js' ).bugzilla;
+var bugzilla = require( '../../lib/webmaker.js' ).bugzilla;
 
 module.exports = function( cache ) {
 

@@ -1,4 +1,4 @@
-var GitHub = require( '../../lib/Webmaker.js' ).github;
+var GitHub = require( '../../lib/webmaker.js' ).github;
 
 module.exports = function( cache ) {
 
