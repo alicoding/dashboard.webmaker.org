@@ -23,6 +23,7 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
   $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );
   $routeProvider.when( "/contributors/:contributor", { templateUrl: "partials/contributors/detail.html", controller: "GitHubContributorController"})
   $routeProvider.when( "/trans/languages", { templateUrl: "partials/transifex/languages.html", controller: "TransifexSplattrController" } );
+  $routeProvider.when( "/tags/:repo", { templateUrl: "partials/tags/detail.html", controller: "GitHubContributorController"})
 
   // Third-level routes
   $routeProvider.when( "/bug/:id", { templateUrl: "partials/bugs/detail.html", controller: "BugDetailSplattrController" } );

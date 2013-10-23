@@ -91,7 +91,14 @@ splattrAppServices.factory('Github', ['$resource', function($resource){
         params: {},
         isArray: true
       }
-    })
+    }),
+    repoTags: $resource('/github/repo/:repo/tags', {}, {
+      get: {
+        method: "GET",
+        params: { repo: "webmaker.org" },
+        isArray: true
+      }
+    }),
   };
 }]);
 

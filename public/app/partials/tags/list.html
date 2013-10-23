@@ -11,7 +11,7 @@
       </a>
       <div class="list-group" ng-repeat="component in componentTags">
         <!-- Links to detail level -->
-        <a href="#" class="list-group-item">
+        <a href="#/tags/{{ component.component }}" class="list-group-item">
           <strong>{{ component.component }}</strong> 
           <span class="badge">{{ component.count }}</span>
         </a>
