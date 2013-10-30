@@ -46,6 +46,7 @@ app.use( require( 'less-middleware' )({
 }));
 app.use( express.static( tmpDir, JSON.parse( JSON.stringify( env.get( "STATIC_MIDDLEWARE" ) ) ) ) );
 app.use( express.static( path.join( __dirname + "/public" ), JSON.parse( JSON.stringify( env.get( "STATIC_MIDDLEWARE" ) ) ) ) );
+app.use( "/", express.static( path.join( __dirname + "/public/app" ), JSON.parse( JSON.stringify( env.get( "STATIC_MIDDLEWARE" ) ) ) ) );
 // bodyParser will parse "application/json", "application/x-www-form-urlencoded" and "multipart/form-data"
 // requests and put the results on req.body and req.files. Handy!
 // If you don't need to handle all three types then just use json(), urlencoded() or multipart() instead.
@@ -68,7 +69,6 @@ app.use( app.router );
 app.use( middleware.errorHandler );
 
 // Express routes
-app.get( "/", routes.index );
 app.get( "/healthcheck", routes.api.healthcheck );
 
 // TODO these bugzilla routes need to be improved from a REST pov.

@@ -1,9 +1,6 @@
 module.exports = function( cache ) {
 
   return {
-    index: function( req, res ) {
-      res.render( "index.html" );
-    },
     api: {
       healthcheck: require( "./api/healthcheck.js" ),
       bugzilla: require( "./api/bugzilla.js" )( cache ),
