@@ -7,7 +7,7 @@ module.exports = function( cache ) {
       tags: function( req, res ) {
         GitHub.repo.tags( req.params.repo, function( err, data ) {
           if ( err ) {
-            res.json( 500, { error: 'Unable to get tags for repo ' + req.params.repo + '.' } );
+            res.json( 500, { error: 'Unable to get tags for repo ' + req.params.repo + '. ' + err.message } );
             return;
           }
           cache.write( req.url, data );
@@ -17,7 +17,7 @@ module.exports = function( cache ) {
       commits: function( req, res ) {
         GitHub.repo.commits( req.params.repo, function( err, data ) {
           if ( err ) {
-            res.json( 500, { error: 'Unable to get commits for repo ' + req.params.repo + '.' } );
+            res.json( 500, { error: 'Unable to get commits for repo ' + req.params.repo + '. ' + err.message } );
             return;
           }
           cache.write( req.url, data );
@@ -27,7 +27,7 @@ module.exports = function( cache ) {
       contributors: function( req, res ) {
         GitHub.repo.contributors( req.params.repo, function( err, data ) {
           if ( err ) {
-            res.json( 500, { error: 'Unable to get contributors for repo ' + req.params.repo + '.' } );
+            res.json( 500, { error: 'Unable to get contributors for repo ' + req.params.repo + '. ' + err.message } );
             return;
           }
           cache.write( req.url, data );
@@ -40,7 +40,7 @@ module.exports = function( cache ) {
         counts: function( req, res ) {
           GitHub.components.commits.counts( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to component commit counts.' } );
+              res.json( 500, { error: 'Unable to component commit counts. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -52,7 +52,7 @@ module.exports = function( cache ) {
         list: function( req, res ) {
           GitHub.components.contributors.list( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get the contributors per component list.' } );
+              res.json( 500, { error: 'Unable to get the contributors per component list. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -62,7 +62,7 @@ module.exports = function( cache ) {
         counts: function( req, res ) {
           GitHub.components.contributors.counts( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get component contributor counts.' } );
+              res.json( 500, { error: 'Unable to get component contributor counts. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -74,7 +74,7 @@ module.exports = function( cache ) {
         counts: function( req, res ) {
           GitHub.components.tags.counts( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get component tag counts.' } );
+              res.json( 500, { error: 'Unable to get component tag counts. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -85,7 +85,7 @@ module.exports = function( cache ) {
       summaries: function( req, res ) {
         GitHub.components.summaries( function( err, data ) {
           if ( err ) {
-            res.json( 500, { error: 'Unable to get component summaries.' } );
+            res.json( 500, { error: 'Unable to get component summaries. ' + err.message } );
             return;
           }
           cache.write( req.url, data );
@@ -97,7 +97,7 @@ module.exports = function( cache ) {
       contributor: function( req, res ) {
           GitHub.suite.contributor( req.params.login, function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get the contributor ' + req.params.login + '.' } );
+              res.json( 500, { error: 'Unable to get the contributor ' + req.params.login + '. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -108,7 +108,7 @@ module.exports = function( cache ) {
         count: function( req, res ) {
           GitHub.suite.commits.count( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get the commit count for the suite.' } );
+              res.json( 500, { error: 'Unable to get the commit count for the suite. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -120,7 +120,7 @@ module.exports = function( cache ) {
         list: function( req, res ) {
           GitHub.suite.contributors.list( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get the contributors list for the suite.' } );
+              res.json( 500, { error: 'Unable to get the contributors list for the suite. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -130,7 +130,7 @@ module.exports = function( cache ) {
         count: function( req, res ) {
           GitHub.suite.contributors.count( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get the contributors count for the suite.' } );
+              res.json( 500, { error: 'Unable to get the contributors count for the suite. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
@@ -142,7 +142,7 @@ module.exports = function( cache ) {
         count: function( req, res ) {
           GitHub.suite.releases.count( function( err, data ) {
             if ( err ) {
-              res.json( 500, { error: 'Unable to get the releases count for the suite.' } );
+              res.json( 500, { error: 'Unable to get the releases count for the suite. ' + err.message } );
               return;
             }
             cache.write( req.url, data );
