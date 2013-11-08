@@ -1,0 +1,9 @@
+{
+  "name": "Splattr",
+  "dependencies": {
+  	"angular": "1.2.0-rc.3",
+  	"bootstrap": "3.0.2",
+    "font-awesome": "3.2.1",
+    "jquery": "2.0.3"
+  }
+}

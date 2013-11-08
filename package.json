@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "Splattr",
   "scripts": {
+    "postinstall": "./node_modules/.bin/bower install",
     "test": "grunt"
   },
   "repository": {
@@ -12,6 +13,7 @@
   "author": "Matthew Schranz <schranz.m@gmail.com>",
   "license": "MPL 2.0",
   "dependencies": {
+    "bower": "1.2.7",
     "bz": "0.3.0",
     "express": "3.1.0",
     "habitat": "0.4.1",
