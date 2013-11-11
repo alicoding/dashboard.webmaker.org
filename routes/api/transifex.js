@@ -1,4 +1,10 @@
-var transifex = require( '../../lib/webmaker.js' ).transifex;
+var transifex = require( 'transifex' ),
+    env = require("../../lib/config.js");
+
+transifex.init({
+  project_slug: env.get("TRANSIFEX-PROJECT"),
+  credential: env.get("TRANSIFEX-AUTH")
+});
 
 module.exports = function( cache ) {
 

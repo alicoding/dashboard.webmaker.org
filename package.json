@@ -40,10 +40,9 @@
     "express": "3.1.0",
     "habitat": "0.4.1",
     "less-middleware": "0.1.12",
-    "lodash": "2.2.1",
     "github": "0.1.12",
     "moment": "2.3.1",
-    "request": "2.27.0"
+    "transifex": "0.0.4"
   },
   "optionalDependencies": {
     "mc": "~1.0.6",
