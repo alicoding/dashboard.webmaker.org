@@ -1,6 +1,4 @@
-Splattr
+dashboard.webmaker.org
 =======
 
-STUFF HAPPENS
-
-...@ localhost:3333/app/index.html
+Dashboard reporting for the Webmaker Suite. See the live app [online](http://splattr.alicoding.com/#/).
