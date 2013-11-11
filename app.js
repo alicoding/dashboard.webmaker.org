@@ -1,11 +1,9 @@
 var express = require( "express" ),
-    nunjucks = require( "nunjucks" ),
     path = require( "path" ),
     request = require( "request" ),
     app = express(),
     env = require( "./lib/config"),
     middleware = require( "./lib/middleware" ),
-    nunjucksEnv = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' ) ) ),
     cache = require( "./lib/cache" ),
     routes = require( "./routes" )( cache );
 
@@ -26,8 +24,6 @@ function checkCache( req, res, next ) {
 }
 checkCache.overrides = {};
 
-// Enable template rendering with nunjucks
-nunjucksEnv.express( app );
 // Don't send the "X-Powered-By: Express" header
 app.disable( "x-powered-by" );
 

@@ -1,16 +1,38 @@
 {
-  "name": "Splattr",
+  "name": "dashboard.webmaker.org",
   "version": "0.0.2",
-  "description": "Splattr",
+  "description": "Dashboard reporting for the Webmaker Suite.",
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
     "test": "grunt"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mjschranz/Splattr.git"
+    "url": "git://github.com/alicoding/dashboard.webmaker.org.git"
   },
-  "author": "Matthew Schranz <schranz.m@gmail.com>",
+  "author": "Ali Al Dallal <ali@alicoding.com>",
+  "contributors": [
+    {
+      "name": "Ali Al Dallal",
+      "email": "ali@alicoding.com"
+    },
+    {
+      "name": "David Humphrey",
+      "email": "david.humphrey@senecacollege.ca"
+    },
+    {
+      "name": "Matthew Schranz",
+      "email": "schranz.m@gmail.com"
+    },
+    {
+      "name": "Rick Eyre",
+      "email": "rick.eyre@hotmail.com"
+    },
+    {
+      "name": "Kieran Sedgewick",
+      "email": "kieran.sedgewick@gmail.com"
+    }
+  ],
   "license": "MPL 2.0",
   "dependencies": {
     "bower": "1.2.7",
@@ -19,7 +41,6 @@
     "habitat": "0.4.1",
     "less-middleware": "0.1.12",
     "lodash": "2.2.1",
-    "nunjucks": "0.1.10",
     "github": "0.1.12",
     "moment": "2.3.1",
     "request": "2.27.0"
@@ -32,11 +53,6 @@
   "devDependencies": {
     "grunt": "0.4.1",
     "grunt-contrib-csslint": "0.1.2",
-    "grunt-contrib-jshint": "0.4.3",
-    "phantomjs" : "*",
-    "karma" : "*",
-    "karma-junit-reporter" : "*",
-    "karma-jasmine" : "*",
-    "karma-ng-scenario" : "*"
+    "grunt-contrib-jshint": "0.4.3"
   }
 }
