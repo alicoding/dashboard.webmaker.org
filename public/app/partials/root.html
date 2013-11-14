@@ -44,11 +44,11 @@
         <strong>Languages</strong>
         <span class="badge">{{ languages.length }}</span>
       </a>
-      <div class="list-group" ng-repeat="component in contributions">
+      <div class="list-group" ng-repeat="(key, data) in contributions">
         <!-- Links to detail level -->
         <a href="#" class="list-group-item">
-          <strong>{{ component.component }}</strong>
-          <span class="badge">{{ component.count }}</span>
+          <strong>{{ key }}</strong>
+          <span class="badge">{{ data }}</span>
         </a>
       </div>
     </div>

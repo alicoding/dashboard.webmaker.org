@@ -94,13 +94,13 @@ app.get( "/github/suite/contributors", checkCache, routes.api.github.suite.contr
 app.get( "/github/suite/contributors/count", checkCache, routes.api.github.suite.contributors.count );
 app.get( "/github/suite/releases/count", checkCache, routes.api.github.suite.releases.count );
 
-app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.numberOfContributors );
+app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.getNumberOfContributors );
 app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStats );
-app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.getLangStats );
+app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.languageStatisticsMethods );
 app.get( "/transifex/languages", checkCache, routes.api.transifex.getAllLanguages );
-app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.componentStats );
-app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.getLangCompStats );
-app.get( "/transifex/components/:locale/details", checkCache, routes.api.transifex.projectLangDetails );
+app.get( "/transifex/:component/stats", checkCache, routes.api.transifex.allStatisticsMethods );
+app.get( "/transifex/:component/:locale/stats", checkCache, routes.api.transifex.oneStatisticsMethods );
+app.get( "/transifex/components/:locale/details", checkCache, routes.api.transifex.languageInstanceMethod );
 
 // To increase client-side performance, we prime the cache with data we'll need.
 // Each resource (route URL) can specify a unique frequency for updates. If

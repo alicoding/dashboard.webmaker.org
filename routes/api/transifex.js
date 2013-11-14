@@ -1,16 +1,17 @@
 var transifex = require( 'transifex' ),
-    env = require("../../lib/config.js");
+    env = require("../../lib/config.js"),
+    project_slug = env.get("TRANSIFEX-PROJECT");
 
 transifex.init({
-  project_slug: env.get("TRANSIFEX-PROJECT"),
+  project_slug: project_slug,
   credential: env.get("TRANSIFEX-AUTH")
 });
 
 module.exports = function( cache ) {
 
   return {
-    numberOfContributors: function( req, res ) {
-      transifex.numberOfContributors( function( err, counts ) {
+    getNumberOfContributors: function( req, res ) {
+      transifex.getNumberOfContributors( function( err, counts ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get Number of contributors.' } );
           return;
@@ -29,9 +30,9 @@ module.exports = function( cache ) {
         res.json( stats );
       });
     },
-    componentStats: function( req, res ) {
-      var component = req.params.component;
-      transifex.componentStats( component, function( err, stats ) {
+    allStatisticsMethods: function( req, res ) {
+      var resource_slug = req.params.component;
+      transifex.statisticsMethods( project_slug, resource_slug, function( err, stats ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get the stats for requested component' } );
           return;
@@ -50,10 +51,10 @@ module.exports = function( cache ) {
         res.json( langs );
       });
     },
-    getLangCompStats: function( req, res ) {
-      var component = req.params.component,
+    oneStatisticsMethods: function( req, res ) {
+      var resource_slug = req.params.component,
           locale = req.params.locale;
-      transifex.getLangCompStats( component, locale, function( err, stats ) {
+      transifex.statisticsMethods( project_slug, resource_slug, locale, function( err, stats ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get the requested language component stats' } );
           return;
@@ -62,9 +63,9 @@ module.exports = function( cache ) {
         res.json( stats );
       });
     },
-    getLangStats: function( req, res ) {
+    languageStatisticsMethods: function( req, res ) {
       var locale = req.params.locale;
-      transifex.getLangStats( locale, function( err, stats ) {
+      transifex.languageStatisticsMethods( locale, function( err, stats ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get the requested language stats' } );
           return;
@@ -73,9 +74,9 @@ module.exports = function( cache ) {
         res.json( stats );
       });
     },
-    projectLangDetails: function( req, res ) {
+    languageInstanceMethod: function( req, res ) {
       var locale = req.params.locale;
-      transifex.projectLangDetails( locale, function( err, details ) {
+      transifex.languageInstanceMethod( project_slug, locale, function( err, details ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get the requested language details' } );
           return;
