@@ -20,8 +20,8 @@ module.exports = function( cache ) {
         res.json( counts );
       });
     },
-    projectStats: function( req, res ) {
-      transifex.projectStats( function( err, stats ) {
+    projectStatisticsMethods: function( req, res ) {
+      transifex.projectStatisticsMethods( function( err, stats ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get the project stats' } );
           return;
@@ -41,8 +41,8 @@ module.exports = function( cache ) {
         res.json( stats );
       });
     },
-    getAllLanguages: function( req, res ) {
-      transifex.getAllLanguages( function( err, langs ) {
+    languageSetInfoMethods: function( req, res ) {
+      transifex.languageSetInfoMethods( function( err, langs ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get list of languages' } );
           return;
