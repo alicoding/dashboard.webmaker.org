@@ -104,13 +104,6 @@ splattrAppServices.factory('Github', ['$resource', function($resource){
 
 splattrAppServices.factory('Transifex', ['$resource', function($resource){
   return {
-    listOfContributors: $resource('/transifex/listOfContributors', {}, {
-      query: {
-        method: 'GET',
-        params: {},
-        isArray: false
-      }
-    }),
     statsAllComponents: $resource( "/transifex/components/:locale/stats", {}, {
       query: {
         method: "GET",

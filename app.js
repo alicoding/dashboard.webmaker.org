@@ -94,7 +94,7 @@ app.get( "/github/suite/contributors", checkCache, routes.api.github.suite.contr
 app.get( "/github/suite/contributors/count", checkCache, routes.api.github.suite.contributors.count );
 app.get( "/github/suite/releases/count", checkCache, routes.api.github.suite.releases.count );
 
-app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.getNumberOfContributors );
+app.get( "/transifex/listOfContributors", checkCache, routes.api.transifex.listOfContributors );
 app.get( "/transifex/components/stats", checkCache, routes.api.transifex.projectStatisticsMethods );
 app.get( "/transifex/components/:locale/stats", checkCache, routes.api.transifex.languageStatisticsMethods );
 app.get( "/transifex/languages", checkCache, routes.api.transifex.languageSetInfoMethods );

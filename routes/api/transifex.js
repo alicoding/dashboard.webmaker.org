@@ -10,8 +10,8 @@ transifex.init({
 module.exports = function( cache ) {
 
   return {
-    getNumberOfContributors: function( req, res ) {
-      transifex.getNumberOfContributors( function( err, counts ) {
+    listOfContributors: function( req, res ) {
+      transifex.listOfContributors( function( err, counts ) {
         if ( err ) {
           res.json( 500, { error: 'Unable to get Number of contributors.' } );
           return;
