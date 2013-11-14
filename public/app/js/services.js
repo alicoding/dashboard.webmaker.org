@@ -108,7 +108,7 @@ splattrAppServices.factory('Transifex', ['$resource', function($resource){
       query: {
         method: 'GET',
         params: {},
-        isArray: true
+        isArray: false
       }
     }),
     statsAllComponents: $resource( "/transifex/components/:locale/stats", {}, {
@@ -136,7 +136,7 @@ splattrAppServices.factory('Transifex', ['$resource', function($resource){
     statLangComponent: $resource( "/transifex/:component/:locale/stats", {}, {
       query: {
         method: "GET",
-        params: { 
+        params: {
           locale: "en_CA",
           component: "webmaker.org"
         }
