@@ -4,62 +4,128 @@
 
 var controllers = angular.module("splattrApp.controllers", []);
 
-  controllers.controller("RootSplattrController", [ "$http", "$scope", "Bugs", "Github", "Transifex", function( $http, $scope, Bugs, Github, Transifex ) {
-    // This controller will collect metadata about transifex & bugs overall (all components)
-    $scope.overallBugCount = Bugs.overallBugCount.query();
-    $scope.suiteCommitsCount = Github.suiteCommitsCount.query();
-    $scope.suiteContributorsCount = Github.suiteContributorsCount.query();
-    $scope.suiteReleasesCount = Github.suiteReleasesCount.query();
-    $scope.languages = Transifex.languages.query();
+  controllers.controller("RootSplattrController", [ "$routeParams", "$http", "$scope",
+    function( $routeParams, $http, $scope ) {
+
+    $http({method: 'GET', url: '/bugzilla/suite/count'})
+      .success(function(data, status, headers, config) {
+      $scope.overallBugCount = data;
+    });
+
+    $http({method: 'GET', url: '/github/suite/commits/count'})
+      .success(function(data, status, headers, config) {
+      $scope.suiteCommitsCount = data;
+    });
+
+    $http({method: 'GET', url: '/github/suite/contributors/count'})
+      .success(function(data, status, headers, config) {
+      $scope.suiteContributorsCount = data;
+    });
+
+    $http({method: 'GET', url: '/github/suite/releases/count'})
+      .success(function(data, status, headers, config) {
+      $scope.suiteReleasesCount = data;
+    });
+
+    $http({method: 'GET', url: '/transifex/languages'})
+      .success(function(data, status, headers, config) {
+      $scope.languages = data;
+    });
+
     $http({method: 'GET', url: '/transifex/listOfContributors'})
       .success(function(data, status, headers, config) {
-    $scope.contributors = data;
-    })
-  }])
-  .controller("BugSplattrController", [ "$scope", "Bugs", "Github", function( $scope, Bugs, Github ) {
-    // Use custom service to query data from the server (see services.js)
-    // NOTE: $routeParams isn't used in this controller.  If you need access to it,
-    //       add it to the declaration like in `BugCompSplatterController`
-    $scope.bugs = Bugs.componentCounts.query();
-    $scope.github = Github.componentSummaries.query();
-  }])
-  .controller("BugDetailSplattrController", [ "$scope", "$routeParams", "Bugs", "Github", function( $scope, $routeParams, Bugs, Github ) {
-    // Use custom service to query data from the server (see services.js)
-    $scope.bug = Bugs.singleBugDetails.get({ id: $routeParams.id });
-  }])
-  .controller("TransifexSplattrController",  [ "$scope", "Transifex", function( $scope, Transifex ) {
-    // Use custom service to query data from the server (see services.js)
-    $scope.transifex = $scope.transifex || {};
-
-    // NOTE: $routeParams isn't used in this controller.  If you need access to it,
-    //       add it to the declaration like in `BugCompSplatterController`
-    $scope.transifex.languages = Transifex.languages.query();
-  }])
-  .controller("statsAllComponents",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
-    $scope.locale = $routeParams.locale;
-    $scope.transifex = Transifex.statsAllComponents.get({ locale: $routeParams.locale });
-    $scope.transifexDetails = Transifex.transAppService.get({ locale: $routeParams.locale });
-  }])
-  .controller("statLangComponent",  [ "$scope", "$routeParams", "Transifex", function( $scope, $routeParams, Transifex ) {
-    $scope.locale = $routeParams.locale;
-    $scope.component = $routeParams.component;
-    $scope.transifex = Transifex.statLangComponent.get({
-      locale: $routeParams.locale,
-      component: $routeParams.component
+      $scope.contributors = data;
     });
+
   }])
-  .controller("BugCompSplattrController", [ "$scope", "$routeParams", "Bugs", "Github", function( $scope, $routeParams, Bugs, Github ) {
-    // Use custom service to query data from the server (see services.js)
+  .controller("BugSplattrController", [ "$http", "$scope",
+    function( $http, $scope ) {
+
+    $http({method: 'GET', url: '/bugzilla/components/counts'})
+      .success(function(data, status, headers, config) {
+      $scope.bugs = data;
+    });
+
+    $http({method: 'GET', url: '/github/components/summaries'})
+      .success(function(data, status, headers, config) {
+      $scope.github = data;
+    });
+
+  }])
+  .controller("BugDetailSplattrController", [ "$http", "$scope", "$routeParams",
+    function( $http, $scope, $routeParams ) {
+
+    $http({method: 'GET', url: '/bugzilla/bug/' + $routeParams.id})
+      .success(function(data, status, headers, config) {
+      $scope.bug = data;
+    });
+
+  }])
+  .controller("statsAllComponents",  [ "$http", "$scope", "$routeParams",
+    function( $http, $scope, $routeParams ) {
+    $scope.locale = $routeParams.locale;
+
+    $http({method: 'GET', url: '/transifex/components/' + $scope.locale + '/stats'})
+      .success(function(data, status, headers, config) {
+      $scope.transifex = data;
+    });
+
+    $http({method: 'GET', url: '/transifex/components/' + $scope.locale + '/details'})
+      .success(function(data, status, headers, config) {
+      $scope.transifexDetails = data;
+    });
+
+  }])
+  .controller("statLangComponent",  [ "$http", "$scope", "$routeParams",
+    function( $http, $scope, $routeParams ) {
+    $scope.locale = $routeParams.locale;
     $scope.component = $routeParams.component;
-    $scope.bugs = Bugs.openBugsByComponent.get({ component: $routeParams.component });
+
+    $http({method: 'GET', url: '/transifex/' + $scope.component + '/' + $scope.locale + '/stats'})
+      .success(function(data, status, headers, config) {
+      $scope.stats = data;
+    });
+
   }])
-  .controller("GitHubContributorController", [ "$scope", "$routeParams", "Github", function( $scope, $routeParams, Github ) {
-    $scope.contributors = Github.suiteContributors.query();
-    $scope.componentTags = Github.componentTags.query();
+  .controller("BugCompSplattrController", [ "$http", "$scope", "$routeParams",
+    function( $http, $scope, $routeParams ) {
+
+    $scope.component = $routeParams.component;
+
+    $http({method: 'GET', url: '/bugzilla/component/' + $scope.component + '/open'})
+      .success(function(data, status, headers, config) {
+      $scope.bugs = data;
+    });
+
+  }])
+  .controller("GitHubContributorController", [ "$http", "$scope", "$routeParams",
+    function( $http, $scope, $routeParams ) {
+
+    $http({method: 'GET', url: '/github/suite/contributors'})
+      .success(function(data, status, headers, config) {
+      $scope.contributors = data;
+    });
+
+    $http({method: 'GET', url: '/github/components/tags/counts'})
+      .success(function(data, status, headers, config) {
+      $scope.componentTags = data;
+    });
+
     if ( "repo" in $routeParams ) {
       $scope.repo = $routeParams.repo;
-      $scope.repoTags = Github.repoTags.get({ repo: $routeParams.repo });
+
+      $http({method: 'GET', url: '/github/repo/' + $scope.repo + '/tags'})
+        .success(function(data, status, headers, config) {
+        $scope.repoTags = data;
+      });
+
     }
-    if ( "contributor" in $routeParams )
-      $scope.contributor = Github.suiteContributor.get({ login: $routeParams.contributor });
+
+    if ( "contributor" in $routeParams ) {
+      $http({method: 'GET', url: '/github/suite/contributor/' + $routeParams.contributor})
+        .success(function(data, status, headers, config) {
+        $scope.contributor = data;
+      });
+    }
+
   }]);
