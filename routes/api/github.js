@@ -81,6 +81,16 @@ module.exports = function( cache ) {
         }
       },
       tags: {
+        list: function( req, res ) {
+          GitHub.components.tags.list( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to get component tags. ' + err.message } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        },
         counts: function( req, res ) {
           GitHub.components.tags.counts( function( err, data ) {
             if ( err ) {
