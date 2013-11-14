@@ -4,15 +4,17 @@
 
 var controllers = angular.module("splattrApp.controllers", []);
 
-  controllers.controller("RootSplattrController", [ "$scope", "Bugs", "Github", "Transifex", function( $scope, Bugs, Github, Transifex ) {
+  controllers.controller("RootSplattrController", [ "$http", "$scope", "Bugs", "Github", "Transifex", function( $http, $scope, Bugs, Github, Transifex ) {
     // This controller will collect metadata about transifex & bugs overall (all components)
     $scope.overallBugCount = Bugs.overallBugCount.query();
     $scope.suiteCommitsCount = Github.suiteCommitsCount.query();
     $scope.suiteContributorsCount = Github.suiteContributorsCount.query();
     $scope.suiteReleasesCount = Github.suiteReleasesCount.query();
-    $scope.contributions = Transifex.listOfContributors.query();
     $scope.languages = Transifex.languages.query();
-
+    $http({method: 'GET', url: '/transifex/listOfContributors'})
+      .success(function(data, status, headers, config) {
+    $scope.contributors = data;
+    })
   }])
   .controller("BugSplattrController", [ "$scope", "Bugs", "Github", function( $scope, Bugs, Github ) {
     // Use custom service to query data from the server (see services.js)

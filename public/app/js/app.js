@@ -18,6 +18,7 @@ splattrApp.config([ "$routeProvider", function( $routeProvider ) {
   $routeProvider.when( "/bugs", { templateUrl: "partials/bugs/components.html", controller: "BugSplattrController" } );
   $routeProvider.when( "/contributors", { templateUrl: "partials/contributors/list.html", controller: "GitHubContributorController"});
   $routeProvider.when( "/tags", { templateUrl: "partials/tags/list.html", controller: "GitHubContributorController"});
+  $routeProvider.when( "/trans/contributors", { templateUrl: "partials/transifex/userlist.html", controller: "TransifexSplattrController"});
 
   // Second-level routes
   $routeProvider.when( "/bugs/comp/:component", { templateUrl: "partials/bugs/one_comp.html", controller: "BugCompSplattrController" } );
