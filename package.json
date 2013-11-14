@@ -43,7 +43,7 @@
     "github": "0.1.12",
     "request": "2.27.0",
     "moment": "2.3.1",
-    "transifex": "1.1.2"
+    "transifex": "1.2.1"
   },
   "optionalDependencies": {
     "mc": "~1.0.6",
