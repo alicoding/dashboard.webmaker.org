@@ -37,6 +37,16 @@ module.exports = function( cache ) {
     },
     components: {
       commits: {
+        list: function( req, res ) {
+          GitHub.components.commits.list( function( err, data ) {
+            if ( err ) {
+              res.json( 500, { error: 'Unable to component commits. ' + err.message } );
+              return;
+            }
+            cache.write( req.url, data );
+            res.json( data );
+          });
+        },
         counts: function( req, res ) {
           GitHub.components.commits.counts( function( err, data ) {
             if ( err ) {

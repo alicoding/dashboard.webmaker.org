@@ -84,6 +84,7 @@ app.get( "/github/repo/:repo/contributors", checkCache, routes.api.github.repo.c
 
 app.get( "/github/components/contributors", checkCache, routes.api.github.components.contributors.list );
 app.get( "/github/components/contributors/counts", checkCache, routes.api.github.components.contributors.counts );
+app.get( "/github/components/commits", checkCache, routes.api.github.components.commits.list );
 app.get( "/github/components/commits/counts", checkCache, routes.api.github.components.commits.counts );
 app.get( "/github/components/tags/counts", checkCache, routes.api.github.components.tags.counts );
 app.get( "/github/components/summaries", checkCache, routes.api.github.components.summaries );
@@ -114,6 +115,7 @@ function primeCache( urlPrefix ) {
     { url: "/bugzilla/suite/count" },
     { url: "/github/components/contributors" },
     { url: "/github/components/contributors/counts" },
+    { url: "/github/components/commits" },
     { url: "/github/components/commits/counts" },
     { url: "/github/components/tags/counts" },
     { url: "/github/components/summaries" },
