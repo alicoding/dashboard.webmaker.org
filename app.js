@@ -118,7 +118,7 @@ function primeCache( urlPrefix ) {
     { url: "/github/components/contributors/counts" },
     { url: "/github/components/commits" },
     { url: "/github/components/commits/counts" },
-    { url: "/github/components/tags/counts" },
+    { url: "/github/components/tags" },
     { url: "/github/components/tags/counts" },
     { url: "/github/components/summaries" },
     { url: "/github/suite/commits/count" },
