@@ -106,7 +106,7 @@ var controllers = angular.module("splattrApp.controllers", []);
       $scope.contributors = data;
     });
 
-    $http({method: 'GET', url: '/github/components/tags/counts'})
+    $http({method: 'GET', url: '/github/components/releases/counts'})
       .success(function(data, status, headers, config) {
       $scope.componentTags = data;
     });
@@ -114,7 +114,7 @@ var controllers = angular.module("splattrApp.controllers", []);
     if ( "repo" in $routeParams ) {
       $scope.repo = $routeParams.repo;
 
-      $http({method: 'GET', url: '/github/repo/' + $scope.repo + '/tags'})
+      $http({method: 'GET', url: '/github/repo/' + $scope.repo + '/releases'})
         .success(function(data, status, headers, config) {
         $scope.repoTags = data;
       });
