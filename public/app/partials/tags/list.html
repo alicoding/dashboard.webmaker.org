@@ -1,7 +1,7 @@
 <!-- BUG PARTIAL, SECOND LEVEL -->
 
 <div class="row">
-  <div class="col-xs-12 col-xs-offset-1">
+  <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0">
     <div class="panel panel-primary">
       <!-- Links to next direct level -->
       <a href="#">
@@ -12,7 +12,7 @@
       <div class="list-group" ng-repeat="component in componentTags">
         <!-- Links to detail level -->
         <a href="#/tags/{{ component.component }}" class="list-group-item">
-          <strong>{{ component.component }}</strong> 
+          <strong>{{ component.component }}</strong>
           <span class="badge">{{ component.count }}</span>
         </a>
       </div>
