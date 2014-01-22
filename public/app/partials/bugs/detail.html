@@ -14,7 +14,7 @@
         <strong>Assigned Too: </strong><span class="badge">{{ bug.assigned_to.real_name }}</span><br>
         <strong>Status: </strong><span class="badge">{{ bug.status }}</span><br>
         <strong>Severity: </strong><span class="badge">{{ bug.severity }}</span><br>
-        <strong>URL: </strong><span class="badge">{{ bug.url }}</span><br>
+        <strong>URL: </strong><span><strong><a href="https://bugzilla.mozilla.org/show_bug.cgi?id={{ bug.id }}">{{ bug.id }}</a></strong></span><br>
         <h3>Comments</h3>
         <div class="list-group" ng-repeat="comment in bug.comments">
           <div class="list-group-item">
