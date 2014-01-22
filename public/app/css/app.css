@@ -17,8 +17,8 @@
 }
 
 .slug-progress-container {
-	width: 75%;
 	margin: 0 auto;
+	display: block;
 }
 
 .slug-container {
@@ -26,5 +26,9 @@
 }
 
 .slug-completed {
-	margin-left: 5px;
+	margin-left: 20px;
+}
+
+a:hover, a:active {
+	text-decoration: none;
 }
